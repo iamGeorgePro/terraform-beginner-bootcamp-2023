@@ -14,6 +14,7 @@ PROJECT_ROOT
 ├── output.tf           # stores our outputs
 └── README.md           # required for root modules
 ```
+- NB: ascii directory files
 
 [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
 
