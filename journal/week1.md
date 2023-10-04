@@ -58,3 +58,31 @@ In Terraform, variable values are determined following a specific order of opera
 **Variable Defaults:** If no default value is provided in the variable block and the variable is not overridden through any other means, Terraform considers the variable as undefined. In such cases, Terraform may prompt users for the value during execution or raise an error for required variables.
 
 This order of operation allows Terraform to handle variables flexibly, accommodating different scenarios and environments by providing default values and allowing users to customize them as needed.
+
+## Dealing With Configuration Drift
+
+Terraform import can be used to recover from situations where the state file is lost, but it may not work for all cloud resources.
+Storing the state file in a reliable location, like Terraform Cloud, is a best practice to avoid state file loss.
+Configuration drift can occur when resources are manually modified outside of Terraform, but Terraform can detect and correct such drift when running `terraform plan`.
+In cases of manual configuration changes, Terraform can attempt to bring the infrastructure back to the expected state.
+The use of the `random` provider for resource naming may not be suitable for all scenarios and can lead to issues when correcting configuration drift.
+
+## What happens if we lose our state file?
+
+If you lose your statefile, you most likley have to tear down all your cloud infrastructure manually.
+
+You can use terraform import but it won't for all cloud resources. You need check the terraform providers documentation for which resources support import.
+
+### Fix Missing Resources with Terraform Import
+
+`terraform import aws_s3_bucket.bucket bucket-name`
+
+[Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
+[AWS S3 Bucket Import](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import)
+
+### Fix Manual Configuration
+
+If someone goes and delete or modifies cloud resource manually through ClickOps. 
+
+If we run Terraform plan is with attempt to put our infrstraucture back into the expected state fixing Configuration Drift
+
