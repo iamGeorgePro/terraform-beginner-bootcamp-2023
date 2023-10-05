@@ -14,6 +14,7 @@ variable "user_uuid" {
 variable "bucket_name" {
   description = "The name of the S3 bucket"
   type        = string
+  default = "gertedb8fc491-7712-4149-b2c2-19a84f7c3cc6"
 
   validation {
     condition     = (
