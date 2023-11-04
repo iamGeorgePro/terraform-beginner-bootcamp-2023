@@ -1,11 +1,11 @@
 terraform {
-  # cloud {
-  #   organization = "George-Terraform-bootcamp-2023"
+   cloud {
+     organization = "George-Terraform-bootcamp-2023"
 
-  #   workspaces {
-  #     name = "terraform-bootcamp"
-  #   }
-  # }
+     workspaces {
+       name = "terraform-Cloud"
+     }
+  }
 }
 
 module "terrahouse_aws" {
