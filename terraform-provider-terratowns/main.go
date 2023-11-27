@@ -123,12 +123,9 @@ func Resource() *schema.Resource {
 				Description: "The content version of the home",
 			},
 		},
-	}
-	log.Print("Resource:start")
-	return resource
-}
 
 func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
 	log.Print("resourceHouseCreate:start")
 	var diags diag.Diagnostics
 
@@ -184,8 +181,6 @@ func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interfac
 
 	log.Print("resourceHouseCreate:end")
 
-	return diags
-}
 
 func resourceHouseRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	log.Print("resourceHouseRead:start")
@@ -234,10 +229,9 @@ func resourceHouseRead(ctx context.Context, d *schema.ResourceData, m interface{
 
 	log.Print("resourceHouseRead:end")
 
-	return diags
-}
 
 func resourceHouseUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
 	log.Print("resourceHouseUpdate:start")
 	var diags diag.Diagnostics
 
@@ -285,10 +279,10 @@ func resourceHouseUpdate(ctx context.Context, d *schema.ResourceData, m interfac
 	d.Set("name",payload["name"])
 	d.Set("description",payload["description"])
 	d.Set("content_version",payload["content_version"])
-	return diags
-}
+
 
 func resourceHouseDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
 	log.Print("resourceHouseDelete:start")
 	var diags diag.Diagnostics
 
@@ -324,5 +318,5 @@ func resourceHouseDelete(ctx context.Context, d *schema.ResourceData, m interfac
 	d.SetId("")
 
 	log.Print("resourceHouseDelete:end")
-	return diags
+
 }
